@@ -21,7 +21,7 @@ const textFieldsSection = document.querySelector("#textFieldsSection");
 const textFields = document.querySelector("#textFields");
 
 const MIN_SCALE = 0.1;
-const MAX_SCALE = 4;
+const MAX_SCALE = 8;
 const STORAGE_IMAGE_MAX_SIZE = 1600;
 const DEFAULT_TEMPLATE_PREVIEW_STROKE = "rgba(0, 0, 0, 0.5)";
 
