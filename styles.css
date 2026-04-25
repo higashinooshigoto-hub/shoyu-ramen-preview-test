@@ -147,6 +147,15 @@ h1 {
   line-height: 1.45;
 }
 
+.text-guidance {
+  margin-top: -4px;
+}
+
+#textFields .field {
+  gap: 6px;
+  margin-top: 8px;
+}
+
 .range-field {
   grid-template-columns: 1fr auto;
   align-items: center;
