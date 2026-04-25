@@ -84,7 +84,7 @@ window.PRODUCT_TEMPLATES = {
       {
         id: "topLine1",
         label: "1行目",
-        placeholder: "5文字程度",
+        placeholder: "4文字程度",
         defaultText: "ああああ",
         maxLength: 5,
         halfWidthMaxLength: 10,
@@ -102,7 +102,7 @@ window.PRODUCT_TEMPLATES = {
       {
         id: "topLine2",
         label: "2行目",
-        placeholder: "10文字程度",
+        placeholder: "8文字程度",
         defaultText: "ああああああああ",
         maxLength: 10,
         halfWidthMaxLength: 20,
@@ -120,7 +120,7 @@ window.PRODUCT_TEMPLATES = {
       {
         id: "bottomLine",
         label: "3行目",
-        placeholder: "9文字程度",
+        placeholder: "8文字程度",
         defaultText: "ああああああああ",
         maxLength: 9,
         halfWidthMaxLength: 18,
