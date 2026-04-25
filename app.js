@@ -114,8 +114,13 @@ function getTextLayerValue(layerId) {
   return state.texts[layerId] || "";
 }
 
+function getTextLayerDisplayValue(layer) {
+  const text = getTextLayerValue(layer.id);
+  return text.length > 0 ? text : layer.defaultText || "";
+}
+
 function hasTextContent() {
-  return getTextLayers().some((layer) => getTextLayerValue(layer.id).trim().length > 0);
+  return getTextLayers().some((layer) => getTextLayerValue(layer.id).length > 0);
 }
 
 function isHalfWidthAlphaNumericText(value) {
@@ -169,8 +174,8 @@ function drawTextLayers(targetCtx, scaleX, scaleY) {
   targetCtx.save();
 
   for (const layer of layers) {
-    const rawText = getTextLayerValue(layer.id);
-    if (!rawText.trim()) continue;
+    const rawText = getTextLayerDisplayValue(layer);
+    if (!rawText.length) continue;
 
     const fontSize = fitTextFontSize(targetCtx, layer, rawText, scale);
     targetCtx.font = buildTextFont(layer, fontSize);
