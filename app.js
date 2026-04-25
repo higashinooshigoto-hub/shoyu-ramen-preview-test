@@ -818,19 +818,6 @@ function handlePointerUp() {
   canvas.classList.remove("dragging");
 }
 
-function handleWheel(event) {
-  if (!state.overlayImage) return;
-  if (!event.shiftKey) return;
-  event.preventDefault();
-
-  state.overlay.rotation += event.deltaY > 0 ? 2 : -2;
-
-  markDesignDirty();
-  syncControlsFromState();
-  render();
-  saveProjectState();
-}
-
 function clearProjectState() {
   localStorage.removeItem(getStorageKey());
   state.overlayImage = null;
@@ -942,8 +929,6 @@ canvas.addEventListener("pointermove", handlePointerMove);
 canvas.addEventListener("pointerup", handlePointerUp);
 canvas.addEventListener("pointercancel", handlePointerUp);
 canvas.addEventListener("pointerleave", handlePointerUp);
-canvas.addEventListener("wheel", handleWheel, { passive: false });
-
 async function initializeApp() {
   resetOverlayState();
   initializeTextControls();
