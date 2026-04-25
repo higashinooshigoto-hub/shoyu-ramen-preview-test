@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shoyu Ramen Preview</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-template-id="shoyu-ramen">
+    <div class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">【ノベルティのお菓子屋さん】</p>
+          <h1>Shoyu Ramen Preview</h1>
+          <p class="lead">
+            画像をアップロードして醤油ラーメンの完成イメージを確認できます
+          </p>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel controls">
+          <h2>1. デザイン画像を読み込む</h2>
+
+          <label class="field">
+            <span>デザイン画像 JPG / PNG / WebP</span>
+            <input id="overlayInput" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" />
+            <p id="overlayStatus" class="file-status"></p>
+          </label>
+
+          <div class="button-row">
+            <button id="fitButton" type="button">印刷範囲に合わせる</button>
+            <button id="resetButton" type="button">初期位置へ戻す</button>
+          </div>
+
+          <h2>2. 画像を調整する</h2>
+
+          <label class="field range-field">
+            <span>拡大率</span>
+            <input id="scaleInput" type="range" min="0.1" max="8" step="0.01" value="1" />
+            <output id="scaleOutput">100%</output>
+          </label>
+
+          <label class="field range-field">
+            <span>角度</span>
+            <input id="rotationInput" type="range" min="-180" max="180" step="1" value="0" />
+            <output id="rotationOutput">0°</output>
+          </label>
+
+          <p class="tips">
+            画像はプレビュー上でドラッグできます。拡大縮小はスライダーで、回転は Shift + ホイールでも調整できます。
+          </p>
+
+          <section id="textFieldsSection" hidden>
+            <h2>3. テキストを入力する</h2>
+            <div id="textFields"></div>
+            <p class="tips">
+              文字数目安に合わせると、サンプルに近い見た目で収まりやすくなります。
+            </p>
+          </section>
+
+          <h2>4. デザインを確定する</h2>
+
+          <p id="confirmStatus" class="tips">
+            調整が終わったら、このデザインで確定してダウンロードへ進みます。
+          </p>
+
+          <div class="footer-actions">
+            <button id="confirmButton" class="primary-button" type="button">
+              このデザインで確定する
+            </button>
+          </div>
+
+          <section id="downloadPanel" class="download-panel" hidden>
+            <h2>5. ZIPをダウンロードする</h2>
+
+            <label class="field">
+              <span>保存形式</span>
+              <select id="exportFormatInput">
+                <option value="png">PNG</option>
+                <option value="jpeg">JPG</option>
+              </select>
+            </label>
+
+            <div class="footer-actions">
+              <button id="downloadButton" class="primary-button" type="button">
+                ZIPをダウンロードする
+              </button>
+            </div>
+          </section>
+
+          <div class="footer-actions secondary-actions">
+            <button id="clearAllButton" class="danger-button" type="button">
+              すべてリセット
+            </button>
+          </div>
+        </section>
+
+        <section class="panel stage-panel">
+          <div class="canvas-shell">
+            <canvas id="stageCanvas" width="1200" height="1200"></canvas>
+          </div>
+          <p class="stage-note">
+            書き出し画像は醤油ラーメン本体に絵柄を合成したイメージです<br />※画像が足りない部分は白背景になります
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      window.DEFAULT_PRODUCT_TEMPLATE_ID = "shoyu-ramen";
+    </script>
+    <script src="./zip-utils.js" defer></script>
+    <script src="./shoyu-fixed-assets.js" defer></script>
+    <script src="./product-templates.js" defer></script>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
