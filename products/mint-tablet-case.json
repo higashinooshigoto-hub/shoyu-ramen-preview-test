@@ -1,0 +1,116 @@
+{
+  "id": "mint-tablet-case",
+  "name": "ミントタブレットケース",
+  "title": "Mint Tablet Label Preview",
+  "eyebrow": "【ノベルティのお菓子屋さん】",
+  "lead": "画像をアップロードしてミントタブレットケースの完成イメージを確認できます",
+  "assets": {
+    "base": "./assets/mint-tablet-case.png"
+  },
+  "canvas": {
+    "width": 1000,
+    "height": 489
+  },
+  "labelRect": {
+    "x": 59,
+    "y": 48.875,
+    "width": 882,
+    "height": 355.25,
+    "borderRadius": 24.5
+  },
+  "overlayStyle": {
+    "blendMode": "source-over",
+    "opacity": 1
+  },
+  "baseLayerOrder": "background",
+  "preview": {
+    "printAreaBackground": "#ffffff",
+    "showPrintAreaGuide": false,
+    "note": "書き出し画像はミントタブレットケース本体にラベルを合成したイメージです<br />※画像が足りない部分は白背景になります"
+  },
+  "export": {
+    "scale": 1,
+    "fileName": "mint-tablet-case-preview"
+  },
+  "textLayers": [],
+  "controls": [
+    {
+      "type": "heading",
+      "text": "1. ラベル画像を読み込む"
+    },
+    {
+      "type": "file",
+      "id": "overlay",
+      "label": "ラベル画像 JPG / PNG / WebP",
+      "accept": ".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+    },
+    {
+      "type": "buttonRow",
+      "buttons": [
+        {
+          "action": "fitOverlay",
+          "label": "ラベル領域に合わせる"
+        },
+        {
+          "action": "resetOverlay",
+          "label": "初期位置へ戻す"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "2. ラベルを調整する"
+    },
+    {
+      "type": "range",
+      "id": "scale",
+      "label": "拡大率",
+      "min": 0.1,
+      "max": 4,
+      "step": 0.01,
+      "value": 1,
+      "output": "percent"
+    },
+    {
+      "type": "range",
+      "id": "rotation",
+      "label": "角度",
+      "min": -180,
+      "max": 180,
+      "step": 1,
+      "value": 0,
+      "output": "degree"
+    },
+    {
+      "type": "tips",
+      "text": "ラベルはプレビュー上でドラッグできます。拡大縮小はスライダーで調整できます。"
+    },
+    {
+      "type": "confirm",
+      "heading": "3. デザインを確定する",
+      "pendingText": "調整が終わったら、このデザインで確定してダウンロードへ進みます。",
+      "confirmedText": "デザインを確定しました。元画像と完成イメージを ZIP でダウンロードできます。",
+      "buttonLabel": "このデザインで確定する"
+    },
+    {
+      "type": "download",
+      "heading": "4. ZIPをダウンロードする",
+      "description": "1.でご入稿の元画像と、生成された合成イメージ画像を一式としてZIP形式でダウンロードいただけます。",
+      "buttonLabel": "ZIPをダウンロードする",
+      "formats": [
+        {
+          "value": "png",
+          "label": "PNG"
+        },
+        {
+          "value": "jpeg",
+          "label": "JPG"
+        }
+      ]
+    },
+    {
+      "type": "resetAll",
+      "label": "すべてリセット"
+    }
+  ]
+}

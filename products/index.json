@@ -1,0 +1,15 @@
+{
+  "defaultProductId": "shoyu-ramen",
+  "products": [
+    {
+      "id": "mint-tablet-case",
+      "name": "ミントタブレットケース",
+      "config": "./products/mint-tablet-case.json"
+    },
+    {
+      "id": "shoyu-ramen",
+      "name": "醤油ラーメン",
+      "config": "./products/shoyu-ramen.json"
+    }
+  ]
+}
