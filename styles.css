@@ -65,6 +65,7 @@ h1 {
   margin: 0;
   font-size: clamp(1.7rem, 3vw, 2.5rem);
   line-height: 1.02;
+  white-space: pre-line;
 }
 
 .lead {
