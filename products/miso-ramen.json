@@ -1,0 +1,222 @@
+{
+  "id": "miso-ramen",
+  "name": "味噌ラーメン",
+  "title": "カップ麺 スーパーカップ（味噌） セミオーダー プレビュー",
+  "eyebrow": "【ノベルティのお菓子屋さん】",
+  "lead": "画像をアップロードして味噌ラーメンの完成イメージを確認できます",
+  "assets": {
+    "base": "./assets/miso-ramen.png",
+    "mask": "./assets/shoyu-ramen-mask.png"
+  },
+  "canvas": {
+    "width": 1200,
+    "height": 1200
+  },
+  "labelRect": {
+    "x": 94,
+    "y": 264,
+    "width": 1012,
+    "height": 604,
+    "borderRadius": 0
+  },
+  "maskRect": {
+    "x": 94,
+    "y": 264,
+    "width": 1012,
+    "height": 604
+  },
+  "clipShape": {
+    "type": "polygon",
+    "points": [
+      { "x": 222, "y": 264 },
+      { "x": 189, "y": 304 },
+      { "x": 163, "y": 345 },
+      { "x": 142, "y": 385 },
+      { "x": 125, "y": 425 },
+      { "x": 112, "y": 466 },
+      { "x": 103, "y": 506 },
+      { "x": 97, "y": 546 },
+      { "x": 94, "y": 586 },
+      { "x": 95, "y": 627 },
+      { "x": 98, "y": 667 },
+      { "x": 105, "y": 707 },
+      { "x": 116, "y": 748 },
+      { "x": 130, "y": 788 },
+      { "x": 148, "y": 828 },
+      { "x": 171, "y": 868 },
+      { "x": 1029, "y": 868 },
+      { "x": 1052, "y": 828 },
+      { "x": 1070, "y": 788 },
+      { "x": 1084, "y": 748 },
+      { "x": 1095, "y": 707 },
+      { "x": 1101, "y": 667 },
+      { "x": 1105, "y": 627 },
+      { "x": 1106, "y": 586 },
+      { "x": 1103, "y": 546 },
+      { "x": 1097, "y": 506 },
+      { "x": 1088, "y": 466 },
+      { "x": 1075, "y": 425 },
+      { "x": 1058, "y": 385 },
+      { "x": 1036, "y": 345 },
+      { "x": 1010, "y": 304 },
+      { "x": 978, "y": 264 }
+    ]
+  },
+  "overlayStyle": {
+    "blendMode": "source-over",
+    "opacity": 1
+  },
+  "baseLayerOrder": "foreground",
+  "preview": {
+    "note": "書き出し画像はラベルに画像と文字を合成したイメージです<br />※画像が足りない部分は白背景になります"
+  },
+  "export": {
+    "scale": 1,
+    "fileName": "miso-ramen-preview"
+  },
+  "textLayers": [
+    {
+      "id": "topLine1",
+      "label": "1行目",
+      "placeholder": "4文字程度",
+      "defaultText": "ああああ",
+      "maxLength": 5,
+      "halfWidthMaxLength": 10,
+      "x": 600,
+      "y": 112,
+      "maxWidth": 410,
+      "fontSize": 84,
+      "minFontSize": 54,
+      "fontWeight": 700,
+      "fontFamily": "\"Hiragino Sans\", \"Yu Gothic\", sans-serif",
+      "fillStyle": "#ffffff",
+      "textAlign": "center",
+      "textBaseline": "middle"
+    },
+    {
+      "id": "topLine2",
+      "label": "2行目",
+      "placeholder": "8文字程度",
+      "defaultText": "ああああああああ",
+      "maxLength": 10,
+      "halfWidthMaxLength": 20,
+      "x": 600,
+      "y": 206,
+      "maxWidth": 830,
+      "fontSize": 84,
+      "minFontSize": 56,
+      "fontWeight": 700,
+      "fontFamily": "\"Hiragino Sans\", \"Yu Gothic\", sans-serif",
+      "fillStyle": "#ffffff",
+      "textAlign": "center",
+      "textBaseline": "middle"
+    },
+    {
+      "id": "bottomLine",
+      "label": "3行目",
+      "placeholder": "8文字程度",
+      "defaultText": "ああああああああ",
+      "maxLength": 9,
+      "halfWidthMaxLength": 18,
+      "x": 600,
+      "y": 844,
+      "maxWidth": 870,
+      "fontSize": 118,
+      "minFontSize": 68,
+      "fontWeight": 700,
+      "fontFamily": "\"Hiragino Sans\", \"Yu Gothic\", sans-serif",
+      "fillStyle": "#ffffff",
+      "strokeStyle": "#DE2525",
+      "lineWidth": 30,
+      "lineJoin": "round",
+      "paintOrder": "stroke-fill",
+      "textAlign": "center",
+      "textBaseline": "middle"
+    }
+  ],
+  "controls": [
+    {
+      "type": "heading",
+      "text": "1. デザイン画像を読み込む"
+    },
+    {
+      "type": "file",
+      "id": "overlay",
+      "label": "デザイン画像 JPG / PNG / WebP",
+      "accept": ".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+    },
+    {
+      "type": "buttonRow",
+      "buttons": [
+        {
+          "action": "fitOverlay",
+          "label": "印刷範囲に合わせる"
+        },
+        {
+          "action": "resetOverlay",
+          "label": "初期位置へ戻す"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "2. 画像を調整する"
+    },
+    {
+      "type": "range",
+      "id": "scale",
+      "label": "拡大率",
+      "min": 0.1,
+      "max": 8,
+      "step": 0.01,
+      "value": 1,
+      "output": "percent"
+    },
+    {
+      "type": "range",
+      "id": "rotation",
+      "label": "角度",
+      "min": -180,
+      "max": 180,
+      "step": 1,
+      "value": 0,
+      "output": "degree"
+    },
+    {
+      "type": "tips",
+      "text": "画像はプレビュー上でドラッグできます。拡大縮小と回転はスライダーで調整できます。"
+    },
+    {
+      "type": "textLayers",
+      "heading": "3. テキストを入力する",
+      "guidance": "文字を入力しない行には空白スペースを入れてください"
+    },
+    {
+      "type": "confirm",
+      "heading": "4. デザインを確定する",
+      "pendingText": "調整が終わったら、このデザインで確定してダウンロードへ進みます。",
+      "confirmedText": "デザインを確定しました。元画像と完成イメージを ZIP でダウンロードできます。",
+      "buttonLabel": "このデザインで確定する"
+    },
+    {
+      "type": "download",
+      "heading": "5. ZIPをダウンロードする",
+      "description": "1.で読み込んだ画像と、生成された合成イメージ画像を一式としてZIP形式でダウンロードいただけます。",
+      "buttonLabel": "ZIPをダウンロードする",
+      "formats": [
+        {
+          "value": "png",
+          "label": "PNG"
+        },
+        {
+          "value": "jpeg",
+          "label": "JPG"
+        }
+      ]
+    },
+    {
+      "type": "resetAll",
+      "label": "すべてリセット"
+    }
+  ]
+}
