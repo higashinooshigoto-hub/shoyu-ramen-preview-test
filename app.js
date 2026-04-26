@@ -646,7 +646,40 @@ function drawEmptyOverlayPreview(targetCtx, scaleX, scaleY) {
 
 function drawTemplatePreviewFill(targetCtx, scaleX, scaleY) {
   if (!scaleX || !scaleY) return;
+  if (state.template.showPrintAreaGuide === false) return;
   drawEmptyOverlayPreview(targetCtx, scaleX, scaleY);
+}
+
+function drawPrintAreaBackground(targetCtx, width, height, scaleX, scaleY) {
+  const maskRect = getMaskRect();
+
+  if (state.maskImage) {
+    const backgroundCanvas = document.createElement("canvas");
+    const backgroundCtx = backgroundCanvas.getContext("2d");
+    backgroundCanvas.width = Math.max(1, Math.round(width));
+    backgroundCanvas.height = Math.max(1, Math.round(height));
+
+    backgroundCtx.fillStyle = "#ffffff";
+    backgroundCtx.fillRect(0, 0, backgroundCanvas.width, backgroundCanvas.height);
+    backgroundCtx.globalCompositeOperation = "destination-in";
+    backgroundCtx.drawImage(
+      state.maskImage,
+      maskRect.x * scaleX,
+      maskRect.y * scaleY,
+      maskRect.width * scaleX,
+      maskRect.height * scaleY,
+    );
+
+    targetCtx.drawImage(backgroundCanvas, 0, 0);
+    return;
+  }
+
+  targetCtx.save();
+  traceShape(targetCtx, getLabelShape(), scaleX, scaleY);
+  targetCtx.clip();
+  targetCtx.fillStyle = "#ffffff";
+  targetCtx.fillRect(0, 0, width, height);
+  targetCtx.restore();
 }
 
 function drawTransformedOverlay(targetCtx, scaleX, scaleY) {
@@ -723,8 +756,11 @@ function drawScene(targetCtx, options = {}) {
     targetCtx.drawImage(state.baseImage, 0, 0, width, height);
   }
 
-  if (showGuide) {
-    drawTemplatePreviewFill(targetCtx, scaleX, scaleY);
+  const shouldDrawPrintAreaBackground =
+    state.overlayImage || (showGuide && state.template.previewPrintAreaBackground);
+
+  if (shouldDrawPrintAreaBackground) {
+    drawPrintAreaBackground(targetCtx, width, height, scaleX, scaleY);
   }
 
   if (state.overlayImage) {
@@ -738,6 +774,7 @@ function drawScene(targetCtx, options = {}) {
   drawTextLayers(targetCtx, scaleX, scaleY);
 
   if (showGuide) {
+    drawTemplatePreviewFill(targetCtx, scaleX, scaleY);
     drawOverlayBounds(targetCtx, scaleX, scaleY);
   }
 }

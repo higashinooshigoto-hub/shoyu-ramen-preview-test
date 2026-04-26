@@ -13,6 +13,8 @@ window.PRODUCT_TEMPLATES = {
       borderRadius: 24.5,
     },
     exportScale: 1,
+    previewPrintAreaBackground: "#ffffff",
+    showPrintAreaGuide: false,
     overlayStyle: {
       blendMode: "source-over",
       opacity: 1,
