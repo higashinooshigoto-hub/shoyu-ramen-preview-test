@@ -1,27 +1,37 @@
 # AGENTS.md
 
-## Project Goal
+## このプロジェクトの目的
 
-This app is a static novelty-product mockup composer. Keep one shared `index.html` and add products through JSON configuration plus image assets.
+このプロジェクトは、ノベルティ商品の注文ページに埋め込む
+「仕上がり合成イメージ作成ツール」です。
 
-## Product Structure
+現在は少数の商品に対応しているが、今後20商品以上に増える前提で開発すること。
 
-- Product list: `products/index.json`
-- Product settings: `products/{productId}.json`
-- Product template example: `products/_template.json`
-- Shared JavaScript modules: `src/`
-- Shared styles: `styles.css`
+## 最重要ルール
 
-## Product Addition Rules
+- 商品ごとに index.html を複製しない。
+- 商品ごとに別プロジェクトを作らない。
+- 商品追加のたびに共通ロジックをコピーしない。
+- 商品ごとの差分は、原則として products/*.json の商品設定ファイルに分離する。
+- 共通処理は src/ 配下の共通モジュールとして管理する。
+- 商品ごとに操作パネルが異なる場合も、個別HTMLを作らず、設定ファイルの controls で出し分ける。
+- 新しい商品を追加する場合は、まず既存の共通部品で対応できるか確認する。
+- 共通部品で対応できない場合のみ、新しい control または productType を追加する。
 
-- Do not copy `index.html` for each product.
-- Do not add product-ID-specific branches to shared JavaScript.
-- Add or update a product by editing `products/{productId}.json` and adding image assets.
-- Use `controls` in product JSON to define the operation panel.
-- Use URL parameters to switch products, for example `?product=shoyu-ramen`.
+## 禁止事項
 
-## Verification
+- mug.html, pen.html, towel.html のように商品ごとにHTMLを増やさない。
+- mugTool.js, penTool.js のようにほぼ同じ処理をコピーしない。
+- 商品IDで大量の if 文を作らない。
+- 1つの巨大な main.js にすべての処理を書かない。
+- 商品固有の見た目・制約・文言を共通ロジックに直書きしない。
 
-- Run `node --check` for JavaScript files after changes.
-- For local browser verification, use a local static server because product JSON is loaded with `fetch()`.
-- Do not use Safari unless explicitly approved by the user for that single check.
+## 今後の開発方針
+
+今後商品が20種類以上に増えても、基本的には以下だけで追加できる状態を目指す。
+
+- 商品設定JSONを追加
+- 商品画像を追加
+- products/index.json に商品IDを追加
+
+共通コードの変更が必要な場合は、特定商品専用ではなく、他商品でも再利用できる部品として実装する。
