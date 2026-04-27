@@ -43,8 +43,22 @@ let state;
 let renderer;
 let controlRefs;
 
+const ROTATION_SNAP_POINTS = [-180, -135, -95, -90, -45, 0, 45, 90, 95, 135, 180];
+const ROTATION_SNAP_THRESHOLD = 1;
+
 function getExportFormat() {
   return controlRefs?.exportFormatInput?.value === "jpeg" ? "jpeg" : "png";
+}
+
+function normalizeRotation(value, shouldSnap = true) {
+  const roundedValue = Math.round(clamp(value, -180, 180));
+  if (!shouldSnap) return roundedValue;
+
+  const snapPoint = ROTATION_SNAP_POINTS.find(
+    (point) => Math.abs(roundedValue - point) <= ROTATION_SNAP_THRESHOLD,
+  );
+
+  return snapPoint ?? roundedValue;
 }
 
 function markDesignDirty() {
@@ -56,7 +70,7 @@ function markDesignDirty() {
 function syncControlsFromState() {
   const bounds = getScaleBounds(state.product);
   state.overlay.scale = clamp(state.overlay.scale, bounds.min, bounds.max);
-  state.overlay.rotation = Math.round(clamp(state.overlay.rotation, -180, 180));
+  state.overlay.rotation = normalizeRotation(state.overlay.rotation, false);
   updateAllRanges(controlRefs, state);
 }
 
@@ -298,12 +312,12 @@ function handleAction(action) {
   }
 }
 
-function handleRangeChange(id, value) {
+function handleRangeChange(id, value, options = {}) {
   if (id === "scale") {
     state.overlay.scale = value;
   }
   if (id === "rotation") {
-    state.overlay.rotation = Math.round(value);
+    state.overlay.rotation = normalizeRotation(value, options.snap !== false);
   }
 
   markDesignDirty();
@@ -325,7 +339,7 @@ function handleRangeStep(id, delta) {
     Number.isFinite(max) ? max : Infinity,
   );
 
-  handleRangeChange(id, nextValue);
+  handleRangeChange(id, nextValue, { snap: false });
 }
 
 async function initializeApp() {
