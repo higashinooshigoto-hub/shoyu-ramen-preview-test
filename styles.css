@@ -165,8 +165,19 @@ h1 {
   align-items: center;
 }
 
-.range-field input[type="range"] {
+.range-control {
   grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.range-control.has-step-buttons {
+  grid-template-columns: 44px 1fr 44px;
+}
+
+.range-field input[type="range"] {
   width: 100%;
   accent-color: var(--accent);
 }
@@ -581,4 +592,15 @@ canvas.dragging {
     width: min(100%, 760px);
     padding: 22px;
   }
+}
+
+.step-button {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  line-height: 1;
 }

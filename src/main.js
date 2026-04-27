@@ -56,7 +56,7 @@ function markDesignDirty() {
 function syncControlsFromState() {
   const bounds = getScaleBounds(state.product);
   state.overlay.scale = clamp(state.overlay.scale, bounds.min, bounds.max);
-  state.overlay.rotation = clamp(state.overlay.rotation, -180, 180);
+  state.overlay.rotation = Math.round(clamp(state.overlay.rotation, -180, 180));
   updateAllRanges(controlRefs, state);
 }
 
@@ -303,13 +303,29 @@ function handleRangeChange(id, value) {
     state.overlay.scale = value;
   }
   if (id === "rotation") {
-    state.overlay.rotation = value;
+    state.overlay.rotation = Math.round(value);
   }
 
   markDesignDirty();
   syncControlsFromState();
   renderer.render();
   saveProjectState();
+}
+
+function handleRangeStep(id, delta) {
+  const input = controlRefs.ranges[id];
+  if (!input) return;
+
+  const min = Number(input.min);
+  const max = Number(input.max);
+  const current = id === "rotation" ? state.overlay.rotation : Number(input.value);
+  const nextValue = clamp(
+    current + delta,
+    Number.isFinite(min) ? min : -Infinity,
+    Number.isFinite(max) ? max : Infinity,
+  );
+
+  handleRangeChange(id, nextValue);
 }
 
 async function initializeApp() {
@@ -338,6 +354,7 @@ async function initializeApp() {
       });
     },
     onRangeChange: handleRangeChange,
+    onRangeStep: handleRangeStep,
     onTextCommit: applyCommittedTextValue,
     onTextDraft: syncDraftTextValue,
   });

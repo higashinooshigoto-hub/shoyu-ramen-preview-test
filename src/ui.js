@@ -70,7 +70,7 @@ export function buildControls(container, product, handlers) {
     }
 
     if (control.type === "range") {
-      const field = document.createElement("label");
+      const field = document.createElement("div");
       field.className = "field range-field";
 
       const label = document.createElement("span");
@@ -89,7 +89,39 @@ export function buildControls(container, product, handlers) {
       input.addEventListener("input", () => {
         handlers.onRangeChange(control.id, Number(input.value));
       });
-      field.append(input);
+
+      const rangeControl = document.createElement("div");
+      rangeControl.className = "range-control";
+
+      if (control.id === "rotation") {
+        rangeControl.classList.add("has-step-buttons");
+
+        const decrementButton = document.createElement("button");
+        decrementButton.type = "button";
+        decrementButton.className = "step-button";
+        decrementButton.textContent = "-";
+        decrementButton.setAttribute("aria-label", `${control.label}を1度下げる`);
+        decrementButton.addEventListener("click", () => {
+          handlers.onRangeStep(control.id, -Number(control.step || 1));
+        });
+        rangeControl.append(decrementButton);
+      }
+
+      rangeControl.append(input);
+
+      if (control.id === "rotation") {
+        const incrementButton = document.createElement("button");
+        incrementButton.type = "button";
+        incrementButton.className = "step-button";
+        incrementButton.textContent = "+";
+        incrementButton.setAttribute("aria-label", `${control.label}を1度上げる`);
+        incrementButton.addEventListener("click", () => {
+          handlers.onRangeStep(control.id, Number(control.step || 1));
+        });
+        rangeControl.append(incrementButton);
+      }
+
+      field.append(rangeControl);
 
       refs.ranges[control.id] = input;
       refs.outputs[control.id] = {
