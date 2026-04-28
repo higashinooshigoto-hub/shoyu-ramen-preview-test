@@ -12,6 +12,11 @@
       "config": "./products/shoyu-ramen.json"
     },
     {
+      "id": "shoyu-ramen-original",
+      "name": "醤油ラーメンオリジナル",
+      "config": "./products/shoyu-ramen-original.json"
+    },
+    {
       "id": "miso-ramen",
       "name": "味噌ラーメン",
       "config": "./products/miso-ramen.json"
