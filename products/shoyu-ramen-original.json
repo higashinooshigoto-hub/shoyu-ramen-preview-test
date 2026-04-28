@@ -6,7 +6,8 @@
   "lead": "画像をアップロードして醤油ラーメンオリジナルの完成イメージを確認できます",
   "assets": {
     "base": "./assets/shoyu-ramen-original.png",
-    "mask": "./assets/shoyu-ramen-original-mask.png"
+    "mask": "./assets/shoyu-ramen-original-mask.png",
+    "boundary": "./assets/shoyu-ramen-original-boundary.png"
   },
   "canvas": {
     "width": 1200,

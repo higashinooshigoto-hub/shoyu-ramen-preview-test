@@ -153,6 +153,9 @@ async function loadProductImages() {
   state.maskImage = state.product.assets.mask
     ? await loadImageFromSrc(state.product.assets.mask)
     : null;
+  state.boundaryImage = state.product.assets.boundary
+    ? await loadImageFromSrc(state.product.assets.boundary)
+    : null;
   renderer.setCanvasSize(state.product.canvas.width, state.product.canvas.height);
 }
 

@@ -180,6 +180,11 @@ export function createRenderer({ canvas, canvasShell, state }) {
     drawEmptyOverlayPreview(targetCtx, scaleX, scaleY);
   }
 
+  function drawBoundaryGuide(targetCtx, width, height) {
+    if (!state.boundaryImage) return;
+    targetCtx.drawImage(state.boundaryImage, 0, 0, width, height);
+  }
+
   function drawPrintAreaBackground(targetCtx, width, height, scaleX, scaleY) {
     const maskRect = getMaskRect(state.product);
 
@@ -306,6 +311,7 @@ export function createRenderer({ canvas, canvasShell, state }) {
     if (showGuide) {
       drawTemplatePreviewFill(targetCtx, scaleX, scaleY);
       drawOverlayBounds(targetCtx, scaleX, scaleY);
+      drawBoundaryGuide(targetCtx, width, height);
     }
   }
 
