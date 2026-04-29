@@ -23,6 +23,29 @@ export function buildControls(container, product, handlers) {
   };
 
   container.replaceChildren();
+  let deferredOverlayButtonRow = null;
+
+  const isOverlayPositionButtonRow = (control) =>
+    control.type === "buttonRow" &&
+    Array.isArray(control.buttons) &&
+    control.buttons.length === 2 &&
+    control.buttons.some((button) => button.action === "fitOverlay") &&
+    control.buttons.some((button) => button.action === "resetOverlay");
+
+  const buildButtonRow = (control) => {
+    const row = document.createElement("div");
+    row.className = "button-row";
+
+    for (const buttonConfig of control.buttons || []) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = buttonConfig.label;
+      button.addEventListener("click", () => handlers.onAction(buttonConfig.action));
+      row.append(button);
+    }
+
+    return row;
+  };
 
   for (const control of product.controls || []) {
     if (control.type === "heading") {
@@ -57,18 +80,13 @@ export function buildControls(container, product, handlers) {
     }
 
     if (control.type === "buttonRow") {
-      const row = document.createElement("div");
-      row.className = "button-row";
+      const row = buildButtonRow(control);
 
-      for (const buttonConfig of control.buttons || []) {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.textContent = buttonConfig.label;
-        button.addEventListener("click", () => handlers.onAction(buttonConfig.action));
-        row.append(button);
+      if (isOverlayPositionButtonRow(control)) {
+        deferredOverlayButtonRow = row;
+      } else {
+        container.append(row);
       }
-
-      container.append(row);
       continue;
     }
 
@@ -133,6 +151,11 @@ export function buildControls(container, product, handlers) {
       };
       updateOutput(output, control.output, Number(input.value));
       container.append(field);
+
+      if (control.id === "rotation" && deferredOverlayButtonRow) {
+        container.append(deferredOverlayButtonRow);
+        deferredOverlayButtonRow = null;
+      }
       continue;
     }
 
@@ -304,6 +327,10 @@ export function buildControls(container, product, handlers) {
       actions.append(button);
       container.append(actions);
     }
+  }
+
+  if (deferredOverlayButtonRow) {
+    container.append(deferredOverlayButtonRow);
   }
 
   return refs;

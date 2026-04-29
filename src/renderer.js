@@ -114,6 +114,13 @@ export function createRenderer({ canvas, canvasShell, state }) {
       if (!rawText.length) continue;
 
       const fontSize = fitTextFontSize(targetCtx, layer, rawText, scale);
+      targetCtx.globalAlpha = 1;
+      targetCtx.globalCompositeOperation = "source-over";
+      targetCtx.filter = "none";
+      targetCtx.shadowColor = "rgba(0, 0, 0, 0)";
+      targetCtx.shadowBlur = 0;
+      targetCtx.shadowOffsetX = 0;
+      targetCtx.shadowOffsetY = 0;
       targetCtx.font = buildTextFont(layer, fontSize);
       targetCtx.textAlign = layer.textAlign || "center";
       targetCtx.textBaseline = layer.textBaseline || "middle";
@@ -192,6 +199,7 @@ export function createRenderer({ canvas, canvasShell, state }) {
   }
 
   function drawBoundaryGuide(targetCtx, width, height) {
+    if (state.product.preview?.showBoundaryGuide === false) return;
     if (!state.boundaryImage) return;
     targetCtx.drawImage(state.boundaryImage, 0, 0, width, height);
   }
