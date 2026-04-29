@@ -32,6 +32,11 @@
       "config": "./products/tonkotsu-ramen.json"
     },
     {
+      "id": "tonkimchi-ramen",
+      "name": "豚キムチラーメン",
+      "config": "./products/tonkimchi-ramen.json"
+    },
+    {
       "id": "tonkotsu-ramen-original",
       "name": "豚骨ラーメンオリジナル",
       "config": "./products/tonkotsu-ramen-original.json"
@@ -40,6 +45,11 @@
       "id": "tonkimchi-ramen-original",
       "name": "豚キムチラーメンオリジナル",
       "config": "./products/tonkimchi-ramen-original.json"
+    },
+    {
+      "id": "wakame-ramen",
+      "name": "わかめラーメン",
+      "config": "./products/wakame-ramen.json"
     },
     {
       "id": "wakame-ramen-original",
