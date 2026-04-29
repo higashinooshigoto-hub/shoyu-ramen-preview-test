@@ -6,7 +6,8 @@
   "lead": "画像をアップロードしてわかめラーメンオリジナルの完成イメージを確認できます",
   "assets": {
     "base": "./assets/wakame-ramen-original.png",
-    "mask": "./assets/wakame-ramen-original-mask.png"
+    "mask": "./assets/wakame-ramen-original-mask.png",
+    "boundary": "./assets/wakame-ramen-original-dashed-guide.png"
   },
   "canvas": {
     "width": 1200,
@@ -32,7 +33,7 @@
   "baseLayerOrder": "foreground",
   "preview": {
     "note": "書き出し画像はラベルに画像と文字を合成したイメージです<br />※画像が足りない部分は白背景になります",
-    "showPrintAreaGuide": true,
+    "showPrintAreaGuide": false,
     "printAreaBackground": "#ffffff"
   },
   "export": {
