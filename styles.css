@@ -41,22 +41,22 @@ input[type="file"] {
 .page {
   width: min(1440px, calc(100vw - 28px));
   margin: 0 auto;
-  padding: 18px 0 24px;
+  padding: 16px 0 24px;
 }
 
 .site-header {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .brand-ribbon {
   overflow: hidden;
-  border-radius: 30px;
+  border-radius: 34px;
   box-shadow: var(--shadow);
 }
 
 .brand-ribbon__top {
-  height: 14px;
-  background: #111111;
+  height: 22px;
+  background: #151515;
 }
 
 .brand-ribbon__body {
@@ -67,12 +67,13 @@ input[type="file"] {
 .brand-ribbon__inner {
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 16px 24px 18px;
+  gap: 22px;
+  min-height: 124px;
+  padding: 22px 26px 24px;
 }
 
 .brand-logo {
-  width: 54px;
+  width: 74px;
   height: auto;
   flex: 0 0 auto;
   filter: brightness(0) saturate(100%) invert(100%);
@@ -81,8 +82,9 @@ input[type="file"] {
 .brand-copy {
   display: flex;
   align-items: baseline;
-  gap: 18px;
-  flex-wrap: wrap;
+  gap: 30px;
+  flex-wrap: nowrap;
+  min-width: 0;
 }
 
 .brand-title,
@@ -92,25 +94,28 @@ input[type="file"] {
 }
 
 .brand-title {
-  font-size: clamp(1.3rem, 2.15vw, 2.25rem);
+  font-size: clamp(2rem, 2.75vw, 3.3rem);
   font-weight: 800;
   line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .brand-subtitle {
-  font-size: clamp(0.72rem, 1.1vw, 1rem);
+  font-size: clamp(0.96rem, 1.3vw, 1.48rem);
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.15;
+  white-space: nowrap;
 }
 
 .product-header {
-  padding: 12px 8px 0;
+  padding: 16px 4px 0;
 }
 
 #productTitle {
   margin: 0;
-  font-size: clamp(1.18rem, 2vw, 1.9rem);
-  line-height: 1.18;
+  font-size: clamp(2rem, 2.6vw, 3rem);
+  line-height: 1.15;
   font-weight: 800;
   color: #111111;
   overflow-wrap: normal;
@@ -382,6 +387,45 @@ canvas.dragging {
     gap: 16px;
   }
 
+  .brand-ribbon {
+    border-radius: 28px;
+  }
+
+  .brand-ribbon__top {
+    height: 18px;
+  }
+
+  .brand-ribbon__inner {
+    gap: 16px;
+    min-height: 104px;
+    padding: 18px 20px 20px;
+  }
+
+  .brand-logo {
+    width: 58px;
+  }
+
+  .brand-copy {
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .brand-title {
+    font-size: clamp(1.55rem, 3vw, 2.3rem);
+  }
+
+  .brand-subtitle {
+    font-size: clamp(0.84rem, 1.45vw, 1.1rem);
+  }
+
+  .product-header {
+    padding-top: 12px;
+  }
+
+  #productTitle {
+    font-size: clamp(1.55rem, 3.2vw, 2.2rem);
+  }
+
   .stage-panel {
     padding: 20px;
   }
@@ -424,39 +468,41 @@ canvas.dragging {
   }
 
   .brand-ribbon__top {
-    height: 10px;
+    height: 12px;
   }
 
   .brand-ribbon__inner {
-    gap: 12px;
+    gap: 10px;
+    min-height: auto;
     padding: 12px 14px 14px;
   }
 
   .brand-logo {
-    width: 42px;
+    width: 36px;
   }
 
   .brand-copy {
     display: grid;
-    gap: 4px;
+    gap: 3px;
   }
 
   .brand-title {
-    font-size: clamp(1rem, 5vw, 1.34rem);
+    font-size: clamp(1rem, 4.5vw, 1.5rem);
   }
 
   .brand-subtitle {
-    font-size: clamp(0.62rem, 2.7vw, 0.8rem);
-    line-height: 1.35;
+    font-size: clamp(0.6rem, 2.35vw, 0.82rem);
+    line-height: 1.2;
+    white-space: normal;
   }
 
   .product-header {
-    padding: 10px 4px 0;
+    padding: 10px 2px 0;
   }
 
   #productTitle {
-    font-size: clamp(1rem, 4.4vw, 1.34rem);
-    line-height: 1.22;
+    font-size: clamp(1.2rem, 5.2vw, 1.8rem);
+    line-height: 1.18;
   }
 
   .layout {
