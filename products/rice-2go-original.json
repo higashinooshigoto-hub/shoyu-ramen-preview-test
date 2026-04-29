@@ -31,8 +31,8 @@
   },
   "baseLayerOrder": "background",
   "preview": {
-    "printAreaBackground": "#B3FFFF",
-    "showPrintAreaGuide": false,
+    "printAreaBackground": "#ffffff",
+    "showPrintAreaGuide": true,
     "note": "書き出し画像はお米ノベルティ（国産米）2合に画像を合成したイメージです<br />※画像が足りない部分は白背景になります"
   },
   "export": {

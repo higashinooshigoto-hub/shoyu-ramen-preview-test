@@ -32,8 +32,8 @@
   "baseLayerOrder": "foreground",
   "preview": {
     "note": "書き出し画像はラベルに画像と文字を合成したイメージです<br />※画像が足りない部分は白背景になります",
-    "showPrintAreaGuide": false,
-    "printAreaBackground": "#B3FFFF"
+    "showPrintAreaGuide": true,
+    "printAreaBackground": "#ffffff"
   },
   "export": {
     "scale": 1,
