@@ -6,8 +6,7 @@
   "lead": "画像をアップロードして豚骨ラーメンオリジナルの完成イメージを確認できます",
   "assets": {
     "base": "./assets/tonkotsu-ramen-original.png",
-    "mask": "./assets/shoyu-ramen-original-mask.png",
-    "boundary": "./assets/shoyu-ramen-original-boundary.png"
+    "mask": "./assets/shoyu-ramen-original-mask.png"
   },
   "canvas": {
     "width": 1200,
@@ -33,7 +32,8 @@
   "baseLayerOrder": "foreground",
   "preview": {
     "note": "書き出し画像はラベルに画像と文字を合成したイメージです<br />※画像が足りない部分は白背景になります",
-    "showPrintAreaGuide": false
+    "showPrintAreaGuide": false,
+    "printAreaBackground": true
   },
   "export": {
     "scale": 1,
