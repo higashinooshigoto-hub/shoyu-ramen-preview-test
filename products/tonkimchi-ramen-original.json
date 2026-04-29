@@ -6,7 +6,8 @@
   "lead": "画像をアップロードして豚キムチラーメンオリジナルの完成イメージを確認できます",
   "assets": {
     "base": "./assets/tonkimchi-ramen-original.png",
-    "mask": "./assets/tonkimchi-ramen-original-mask.png"
+    "mask": "./assets/tonkimchi-ramen-original-mask.png",
+    "boundary": "./assets/tonkimchi-ramen-original-boundary.png"
   },
   "canvas": {
     "width": 1200,
