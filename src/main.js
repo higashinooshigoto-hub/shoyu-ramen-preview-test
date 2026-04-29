@@ -30,9 +30,7 @@ import {
 } from "./ui.js";
 
 const elements = {
-  eyebrow: document.querySelector("#productEyebrow"),
   title: document.querySelector("#productTitle"),
-  lead: document.querySelector("#productLead"),
   controls: document.querySelector("#controlsPanel"),
   canvas: document.querySelector("#stageCanvas"),
   canvasShell: document.querySelector(".canvas-shell"),

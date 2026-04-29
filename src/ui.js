@@ -1,8 +1,11 @@
+function getProductHeading(product) {
+  const source = product.headerTitle || product.title || product.name || "Product Preview";
+  return source.replace(/\s*プレビュー$/, "").trim();
+}
+
 export function applyProductContent(product, elements) {
   document.title = product.title || product.name || "Product Preview";
-  elements.eyebrow.textContent = product.eyebrow || "";
-  elements.title.textContent = product.title || product.name || "";
-  elements.lead.textContent = product.lead || "";
+  elements.title.textContent = getProductHeading(product);
   elements.stageNote.innerHTML = product.preview?.note || "";
 }
 
