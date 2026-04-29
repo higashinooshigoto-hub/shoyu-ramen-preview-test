@@ -50,12 +50,12 @@ input[type="file"] {
 
 .brand-ribbon {
   overflow: hidden;
-  border-radius: 34px;
+  border-radius: 30px;
   box-shadow: var(--shadow);
 }
 
 .brand-ribbon__top {
-  height: 22px;
+  height: 18px;
   background: #151515;
 }
 
@@ -67,13 +67,13 @@ input[type="file"] {
 .brand-ribbon__inner {
   display: flex;
   align-items: center;
-  gap: 22px;
-  min-height: 124px;
-  padding: 22px 26px 24px;
+  gap: 16px;
+  min-height: 92px;
+  padding: 14px 20px 16px;
 }
 
 .brand-logo {
-  width: 74px;
+  width: 48px;
   height: auto;
   flex: 0 0 auto;
   filter: brightness(0) saturate(100%) invert(100%);
@@ -82,7 +82,7 @@ input[type="file"] {
 .brand-copy {
   display: flex;
   align-items: baseline;
-  gap: 30px;
+  gap: 18px;
   flex-wrap: nowrap;
   min-width: 0;
 }
@@ -94,7 +94,7 @@ input[type="file"] {
 }
 
 .brand-title {
-  font-size: clamp(2rem, 2.75vw, 3.3rem);
+  font-size: clamp(1.2rem, 1.95vw, 2.1rem);
   font-weight: 800;
   line-height: 1;
   letter-spacing: 0;
@@ -102,20 +102,20 @@ input[type="file"] {
 }
 
 .brand-subtitle {
-  font-size: clamp(0.96rem, 1.3vw, 1.48rem);
+  font-size: clamp(0.72rem, 0.92vw, 1rem);
   font-weight: 700;
   line-height: 1.15;
   white-space: nowrap;
 }
 
 .product-header {
-  padding: 16px 4px 0;
+  padding: 8px 4px 0;
 }
 
 #productTitle {
   margin: 0;
-  font-size: clamp(2rem, 2.6vw, 3rem);
-  line-height: 1.15;
+  font-size: clamp(1.9rem, 2.25vw, 2.65rem);
+  line-height: 1.12;
   font-weight: 800;
   color: #111111;
   overflow-wrap: normal;
@@ -388,42 +388,42 @@ canvas.dragging {
   }
 
   .brand-ribbon {
-    border-radius: 28px;
+    border-radius: 26px;
   }
 
   .brand-ribbon__top {
-    height: 18px;
+    height: 14px;
   }
 
   .brand-ribbon__inner {
-    gap: 16px;
-    min-height: 104px;
-    padding: 18px 20px 20px;
+    gap: 14px;
+    min-height: 82px;
+    padding: 12px 18px 14px;
   }
 
   .brand-logo {
-    width: 58px;
+    width: 42px;
   }
 
   .brand-copy {
-    gap: 18px;
+    gap: 14px;
     flex-wrap: wrap;
   }
 
   .brand-title {
-    font-size: clamp(1.55rem, 3vw, 2.3rem);
+    font-size: clamp(1.05rem, 2.4vw, 1.7rem);
   }
 
   .brand-subtitle {
-    font-size: clamp(0.84rem, 1.45vw, 1.1rem);
+    font-size: clamp(0.72rem, 1.05vw, 0.92rem);
   }
 
   .product-header {
-    padding-top: 12px;
+    padding-top: 8px;
   }
 
   #productTitle {
-    font-size: clamp(1.55rem, 3.2vw, 2.2rem);
+    font-size: clamp(1.55rem, 2.65vw, 2rem);
   }
 
   .stage-panel {
@@ -468,17 +468,17 @@ canvas.dragging {
   }
 
   .brand-ribbon__top {
-    height: 12px;
+    height: 10px;
   }
 
   .brand-ribbon__inner {
     gap: 10px;
     min-height: auto;
-    padding: 12px 14px 14px;
+    padding: 10px 12px 12px;
   }
 
   .brand-logo {
-    width: 36px;
+    width: 30px;
   }
 
   .brand-copy {
@@ -487,11 +487,11 @@ canvas.dragging {
   }
 
   .brand-title {
-    font-size: clamp(1rem, 4.5vw, 1.5rem);
+    font-size: clamp(0.96rem, 3.8vw, 1.26rem);
   }
 
   .brand-subtitle {
-    font-size: clamp(0.6rem, 2.35vw, 0.82rem);
+    font-size: clamp(0.56rem, 2vw, 0.72rem);
     line-height: 1.2;
     white-space: normal;
   }
@@ -501,7 +501,7 @@ canvas.dragging {
   }
 
   #productTitle {
-    font-size: clamp(1.2rem, 5.2vw, 1.8rem);
+    font-size: clamp(1.2rem, 4.7vw, 1.6rem);
     line-height: 1.18;
   }
 
