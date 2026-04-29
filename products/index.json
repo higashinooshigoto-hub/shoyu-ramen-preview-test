@@ -40,6 +40,11 @@
       "id": "tonkimchi-ramen-original",
       "name": "豚キムチラーメンオリジナル",
       "config": "./products/tonkimchi-ramen-original.json"
+    },
+    {
+      "id": "wakame-ramen-original",
+      "name": "わかめラーメンオリジナル",
+      "config": "./products/wakame-ramen-original.json"
     }
   ]
 }
