@@ -60,6 +60,16 @@
       "id": "koebi-soba-original",
       "name": "小海老天そばミニオリジナル",
       "config": "./products/koebi-soba-original.json"
+    },
+    {
+      "id": "rice-2go-original",
+      "name": "お米ノベルティ2合オリジナル",
+      "config": "./products/rice-2go-original.json"
+    },
+    {
+      "id": "rice-1go-original",
+      "name": "お米ノベルティ1合オリジナル",
+      "config": "./products/rice-1go-original.json"
     }
   ]
 }
