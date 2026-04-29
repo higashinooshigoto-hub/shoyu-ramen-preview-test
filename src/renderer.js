@@ -13,7 +13,18 @@ export function createRenderer({ canvas, canvasShell, state }) {
   function setCanvasSize(width, height) {
     canvas.width = width;
     canvas.height = height;
-    canvasShell.style.setProperty("--stage-aspect-ratio", `${width} / ${height}`);
+    canvasShell.style.setProperty(
+      "--stage-aspect-ratio",
+      state.product.preview?.stageAspectRatio || `${width} / ${height}`,
+    );
+    const fitCanvasToShell = state.product.preview?.fitCanvasToShell === true;
+    canvas.style.width = fitCanvasToShell ? "100%" : "";
+    canvas.style.height = fitCanvasToShell ? "100%" : "";
+    canvas.style.maxWidth = fitCanvasToShell ? "100%" : "";
+    canvas.style.maxHeight = fitCanvasToShell ? "100%" : "";
+    canvas.style.objectFit = fitCanvasToShell
+      ? state.product.preview?.stageObjectFit || "contain"
+      : "";
   }
 
   function traceRoundedRect(targetCtx, rect, scaleX = 1, scaleY = 1) {
