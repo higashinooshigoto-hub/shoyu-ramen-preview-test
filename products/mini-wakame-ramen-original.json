@@ -1,0 +1,123 @@
+{
+  "id": "mini-wakame-ramen-original",
+  "name": "ミニわかめラーメンオリジナル",
+  "title": "カップ麺 ミニわかめラーメン（ごま・しょうゆ） オリジナル プレビュー",
+  "eyebrow": "【ノベルティのお菓子屋さん】",
+  "lead": "画像をアップロードしてミニわかめラーメンオリジナルの完成イメージを確認できます",
+  "assets": {
+    "base": "./assets/mini-wakame-ramen-original.png",
+    "mask": "./assets/mini-wakame-ramen-original-mask.png"
+  },
+  "canvas": {
+    "width": 1200,
+    "height": 1200
+  },
+  "labelRect": {
+    "x": 0,
+    "y": 0,
+    "width": 1200,
+    "height": 1088,
+    "borderRadius": 0
+  },
+  "maskRect": {
+    "x": 0,
+    "y": 0,
+    "width": 1200,
+    "height": 1088
+  },
+  "overlayStyle": {
+    "blendMode": "source-over",
+    "opacity": 1
+  },
+  "baseLayerOrder": "foreground",
+  "preview": {
+    "note": "書き出し画像はラベルに画像と文字を合成したイメージです<br />※画像が足りない部分は白背景になります",
+    "showPrintAreaGuide": false,
+    "printAreaBackground": true
+  },
+  "export": {
+    "scale": 1,
+    "fileName": "mini-wakame-ramen-original-preview"
+  },
+  "textLayers": [],
+  "controls": [
+    {
+      "type": "heading",
+      "text": "1. デザイン画像を読み込む"
+    },
+    {
+      "type": "file",
+      "id": "overlay",
+      "label": "デザイン画像 JPG / PNG / WebP",
+      "accept": ".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+    },
+    {
+      "type": "buttonRow",
+      "buttons": [
+        {
+          "action": "fitOverlay",
+          "label": "印刷範囲に合わせる"
+        },
+        {
+          "action": "resetOverlay",
+          "label": "初期位置へ戻す"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "2. 画像を調整する"
+    },
+    {
+      "type": "range",
+      "id": "scale",
+      "label": "拡大率",
+      "min": 0.1,
+      "max": 8,
+      "step": 0.01,
+      "value": 1,
+      "output": "percent"
+    },
+    {
+      "type": "range",
+      "id": "rotation",
+      "label": "角度",
+      "min": -180,
+      "max": 180,
+      "step": 1,
+      "value": 0,
+      "output": "degree"
+    },
+    {
+      "type": "tips",
+      "text": "画像はプレビュー上でドラッグできます。拡大縮小と回転はスライダーで調整できます。"
+    },
+    {
+      "type": "confirm",
+      "heading": "3. デザインを確定する",
+      "pendingText": "調整が終わったら、このデザインで確定してダウンロードへ進みます。",
+      "confirmedText": "デザインを確定しました。元画像と完成イメージを ZIP でダウンロードできます。",
+      "buttonLabel": "このデザインで確定する"
+    },
+    {
+      "type": "download",
+      "heading": "4. ZIPをダウンロードする",
+      "description": "1.で読み込んだ画像と、生成された合成イメージ画像を一式としてZIP形式でダウンロードいただけます。",
+      "buttonLabel": "ZIPをダウンロードする",
+      "formats": [
+        {
+          "value": "png",
+          "label": "PNG"
+        },
+        {
+          "value": "jpeg",
+          "label": "JPG"
+        }
+      ]
+    },
+    {
+      "type": "resetAll",
+      "label": "すべてリセット"
+    }
+  ]
+}
