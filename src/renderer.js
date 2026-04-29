@@ -187,6 +187,10 @@ export function createRenderer({ canvas, canvasShell, state }) {
 
   function drawPrintAreaBackground(targetCtx, width, height, scaleX, scaleY) {
     const maskRect = getMaskRect(state.product);
+    const fillColor =
+      typeof state.product.preview?.printAreaBackground === "string"
+        ? state.product.preview.printAreaBackground
+        : "#ffffff";
 
     if (state.maskImage) {
       const backgroundCanvas = document.createElement("canvas");
@@ -194,7 +198,7 @@ export function createRenderer({ canvas, canvasShell, state }) {
       backgroundCanvas.width = Math.max(1, Math.round(width));
       backgroundCanvas.height = Math.max(1, Math.round(height));
 
-      backgroundCtx.fillStyle = "#ffffff";
+      backgroundCtx.fillStyle = fillColor;
       backgroundCtx.fillRect(0, 0, backgroundCanvas.width, backgroundCanvas.height);
       backgroundCtx.globalCompositeOperation = "destination-in";
       backgroundCtx.drawImage(
@@ -212,7 +216,7 @@ export function createRenderer({ canvas, canvasShell, state }) {
     targetCtx.save();
     traceShape(targetCtx, getLabelShape(), scaleX, scaleY);
     targetCtx.clip();
-    targetCtx.fillStyle = "#ffffff";
+    targetCtx.fillStyle = fillColor;
     targetCtx.fillRect(0, 0, width, height);
     targetCtx.restore();
   }

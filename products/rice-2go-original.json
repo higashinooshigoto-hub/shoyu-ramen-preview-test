@@ -6,8 +6,7 @@
   "lead": "画像をアップロードしてお米ノベルティ（国産米）2合の完成イメージを確認できます",
   "assets": {
     "base": "./assets/rice-2go-original-base.png",
-    "mask": "./assets/rice-2go-original-mask.png",
-    "boundary": "./assets/rice-2go-original-boundary.png"
+    "mask": "./assets/rice-2go-original-mask.png"
   },
   "canvas": {
     "width": 1200,
@@ -32,7 +31,7 @@
   },
   "baseLayerOrder": "background",
   "preview": {
-    "printAreaBackground": "#ffffff",
+    "printAreaBackground": "#B3FFFF",
     "showPrintAreaGuide": false,
     "note": "書き出し画像はお米ノベルティ（国産米）2合に画像を合成したイメージです<br />※画像が足りない部分は白背景になります"
   },
