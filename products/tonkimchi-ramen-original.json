@@ -17,14 +17,14 @@
     "x": 0,
     "y": 0,
     "width": 1200,
-    "height": 1093,
+    "height": 1092,
     "borderRadius": 0
   },
   "maskRect": {
     "x": 0,
     "y": 0,
     "width": 1200,
-    "height": 1093
+    "height": 1200
   },
   "overlayStyle": {
     "blendMode": "source-over",
