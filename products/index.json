@@ -30,6 +30,11 @@
       "id": "tonkotsu-ramen",
       "name": "豚骨ラーメン",
       "config": "./products/tonkotsu-ramen.json"
+    },
+    {
+      "id": "tonkotsu-ramen-original",
+      "name": "豚骨ラーメンオリジナル",
+      "config": "./products/tonkotsu-ramen-original.json"
     }
   ]
 }
