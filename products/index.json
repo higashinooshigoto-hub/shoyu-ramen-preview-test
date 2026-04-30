@@ -52,6 +52,11 @@
       "config": "./products/wakame-ramen.json"
     },
     {
+      "id": "mini-wakame-ramen",
+      "name": "ミニわかめラーメン",
+      "config": "./products/mini-wakame-ramen.json"
+    },
+    {
       "id": "wakame-ramen-original",
       "name": "わかめラーメンオリジナル",
       "config": "./products/wakame-ramen-original.json"
