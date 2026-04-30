@@ -24,6 +24,7 @@ export function buildControls(container, product, handlers) {
 
   container.replaceChildren();
   let deferredOverlayButtonRow = null;
+  let rotationField = null;
 
   const isOverlayPositionButtonRow = (control) =>
     control.type === "buttonRow" &&
@@ -83,6 +84,7 @@ export function buildControls(container, product, handlers) {
       const row = buildButtonRow(control);
 
       if (isOverlayPositionButtonRow(control)) {
+        row.dataset.overlayPositionButtons = "true";
         deferredOverlayButtonRow = row;
       } else {
         container.append(row);
@@ -151,6 +153,10 @@ export function buildControls(container, product, handlers) {
       };
       updateOutput(output, control.output, Number(input.value));
       container.append(field);
+
+      if (control.id === "rotation") {
+        rotationField = field;
+      }
 
       if (control.id === "rotation" && deferredOverlayButtonRow) {
         container.append(deferredOverlayButtonRow);
@@ -331,6 +337,11 @@ export function buildControls(container, product, handlers) {
 
   if (deferredOverlayButtonRow) {
     container.append(deferredOverlayButtonRow);
+  }
+
+  const overlayButtonRow = container.querySelector('[data-overlay-position-buttons="true"]');
+  if (rotationField && overlayButtonRow && rotationField.nextSibling !== overlayButtonRow) {
+    rotationField.insertAdjacentElement("afterend", overlayButtonRow);
   }
 
   return refs;

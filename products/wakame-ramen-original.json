@@ -53,19 +53,6 @@
       "accept": ".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
     },
     {
-      "type": "buttonRow",
-      "buttons": [
-        {
-          "action": "fitOverlay",
-          "label": "印刷範囲に合わせる"
-        },
-        {
-          "action": "resetOverlay",
-          "label": "初期位置へ戻す"
-        }
-      ]
-    },
-    {
       "type": "heading",
       "text": "2. 画像を調整する"
     },
@@ -88,6 +75,19 @@
       "step": 1,
       "value": 0,
       "output": "degree"
+    },
+    {
+      "type": "buttonRow",
+      "buttons": [
+        {
+          "action": "fitOverlay",
+          "label": "印刷範囲に合わせる"
+        },
+        {
+          "action": "resetOverlay",
+          "label": "初期位置へ戻す"
+        }
+      ]
     },
     {
       "type": "tips",

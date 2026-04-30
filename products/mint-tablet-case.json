@@ -48,19 +48,6 @@
       "accept": ".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
     },
     {
-      "type": "buttonRow",
-      "buttons": [
-        {
-          "action": "fitOverlay",
-          "label": "ラベル領域に合わせる"
-        },
-        {
-          "action": "resetOverlay",
-          "label": "初期位置へ戻す"
-        }
-      ]
-    },
-    {
       "type": "heading",
       "text": "2. ラベルを調整する"
     },
@@ -83,6 +70,19 @@
       "step": 1,
       "value": 0,
       "output": "degree"
+    },
+    {
+      "type": "buttonRow",
+      "buttons": [
+        {
+          "action": "fitOverlay",
+          "label": "ラベル領域に合わせる"
+        },
+        {
+          "action": "resetOverlay",
+          "label": "初期位置へ戻す"
+        }
+      ]
     },
     {
       "type": "tips",
