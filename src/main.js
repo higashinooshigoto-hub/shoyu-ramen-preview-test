@@ -13,6 +13,7 @@ import { createRenderer } from "./renderer.js";
 import {
   clamp,
   createComposerState,
+  getDefaultTexts,
   getScaleBounds,
   getSafeAreaRect,
   getStorageKey,
@@ -100,7 +101,10 @@ function saveProjectState() {
 
 async function restoreProjectState() {
   const raw = localStorage.getItem(getStorageKey(state.product));
-  if (!raw) return;
+  if (!raw) {
+    syncTextInputs(controlRefs, state);
+    return;
+  }
 
   try {
     const saved = JSON.parse(raw);
@@ -109,7 +113,15 @@ async function restoreProjectState() {
       controlRefs.exportFormatInput.value = saved.exportFormat === "jpeg" ? "jpeg" : "png";
     }
 
-    state.texts = saved.texts && typeof saved.texts === "object" ? saved.texts : {};
+    const defaultTexts = getDefaultTexts(state.product);
+    const savedTexts = saved.texts && typeof saved.texts === "object" ? saved.texts : {};
+    state.texts = { ...defaultTexts };
+
+    for (const [layerId, value] of Object.entries(savedTexts)) {
+      if (typeof value === "string" && value.length > 0) {
+        state.texts[layerId] = value;
+      }
+    }
 
     if (saved.overlayStorageUrl) {
       state.overlayStorageUrl = saved.overlayStorageUrl;
@@ -222,7 +234,7 @@ function clearProjectState() {
   state.overlayOriginalData = null;
   state.overlayStorageUrl = null;
   state.overlayFileName = "";
-  state.texts = {};
+  state.texts = getDefaultTexts(state.product);
   state.dragging = false;
   state.isDesignConfirmed = false;
   resetOverlayState(state);
@@ -376,6 +388,7 @@ async function initializeApp() {
 
   resetOverlayState(state);
   syncControlsFromState();
+  syncTextInputs(controlRefs, state);
   updateConfirmUI(controlRefs, state.isDesignConfirmed);
   renderer.setCanvasSize(product.canvas.width, product.canvas.height);
   renderer.drawPlaceholder();

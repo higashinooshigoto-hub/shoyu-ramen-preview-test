@@ -14,12 +14,16 @@ export function getScaleBounds(product) {
   };
 }
 
+export function getDefaultTexts(product) {
+  return Object.fromEntries(
+    (product.textLayers || []).map((layer) => [layer.id, layer.defaultText || ""]),
+  );
+}
+
 export function createComposerState(product) {
   const scaleControl = getControl(product, "scale") || {};
   const initialScale = Number(scaleControl.value ?? 1);
-  const texts = Object.fromEntries(
-    (product.textLayers || []).map((layer) => [layer.id, layer.defaultText || ""]),
-  );
+  const texts = getDefaultTexts(product);
 
   return {
     product,
