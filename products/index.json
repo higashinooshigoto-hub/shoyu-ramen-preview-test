@@ -67,9 +67,19 @@
       "config": "./products/mini-wakame-ramen-original.json"
     },
     {
+      "id": "toridaki-udon",
+      "name": "鶏炊きうどんミニ",
+      "config": "./products/toridaki-udon.json"
+    },
+    {
       "id": "toridaki-udon-original",
       "name": "鶏炊きうどんミニオリジナル",
       "config": "./products/toridaki-udon-original.json"
+    },
+    {
+      "id": "koebi-soba",
+      "name": "小海老天そばミニ",
+      "config": "./products/koebi-soba.json"
     },
     {
       "id": "koebi-soba-original",
