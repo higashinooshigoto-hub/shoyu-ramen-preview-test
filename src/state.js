@@ -17,6 +17,9 @@ export function getScaleBounds(product) {
 export function createComposerState(product) {
   const scaleControl = getControl(product, "scale") || {};
   const initialScale = Number(scaleControl.value ?? 1);
+  const texts = Object.fromEntries(
+    (product.textLayers || []).map((layer) => [layer.id, layer.defaultText || ""]),
+  );
 
   return {
     product,
@@ -35,7 +38,7 @@ export function createComposerState(product) {
       scale: initialScale,
       rotation: 0,
     },
-    texts: {},
+    texts,
     isDesignConfirmed: false,
   };
 }

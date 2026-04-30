@@ -266,7 +266,17 @@
       "heading": "5. ZIPをダウンロードする",
       "description": "1.で読み込んだ画像と、生成された合成イメージ画像を一式としてZIP形式でダウンロードいただけます。",
       "buttonLabel": "ZIPをダウンロードする",
-      "disabledLabel": "デザイン確定後にダウンロードできます"
+      "disabledLabel": "デザイン確定後にダウンロードできます",
+      "formats": [
+        {
+          "value": "png",
+          "label": "PNG"
+        },
+        {
+          "value": "jpeg",
+          "label": "JPG"
+        }
+      ]
     }
   ]
 }
