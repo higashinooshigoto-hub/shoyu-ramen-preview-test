@@ -288,7 +288,7 @@ export function buildControls(container, product, handlers) {
       container.append(status);
 
       const actions = document.createElement("div");
-      actions.className = "footer-actions";
+      actions.className = "footer-actions footer-actions--confirm";
 
       const button = document.createElement("button");
       button.className = "primary-button";
@@ -339,7 +339,7 @@ export function buildControls(container, product, handlers) {
       panel.append(field);
 
       const actions = document.createElement("div");
-      actions.className = "footer-actions";
+      actions.className = "footer-actions footer-actions--download";
 
       const button = document.createElement("button");
       button.className = "primary-button";
@@ -357,7 +357,7 @@ export function buildControls(container, product, handlers) {
 
     if (control.type === "resetAll") {
       const actions = document.createElement("div");
-      actions.className = "footer-actions secondary-actions";
+      actions.className = "footer-actions footer-actions--reset secondary-actions";
 
       const button = document.createElement("button");
       button.className = "danger-button";

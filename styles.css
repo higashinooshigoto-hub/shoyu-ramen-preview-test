@@ -307,7 +307,6 @@ button:hover {
 }
 
 .danger-button {
-  width: 100%;
   background: #f1f4f8;
   color: #425064;
 }
@@ -316,6 +315,17 @@ button:hover {
   display: grid;
   gap: 10px;
   margin-top: 16px;
+}
+
+.footer-actions .primary-button,
+.footer-actions .danger-button {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.footer-actions--confirm,
+.footer-actions--reset {
+  justify-items: center;
 }
 
 .secondary-actions {
@@ -723,8 +733,9 @@ body[data-ui-theme="artboard-v1"] .stage-note {
     padding: 16px;
   }
 
-  .primary-button {
-    width: 100%;
+  .footer-actions .primary-button,
+  .footer-actions .danger-button {
+    width: fit-content;
   }
 
   body[data-ui-theme="artboard-v1"] .page {
