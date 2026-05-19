@@ -4,6 +4,14 @@
   "title": "お米ノベルティ（国産米）2合 オリジナル プレビュー",
   "eyebrow": "【ノベルティのお菓子屋さん】",
   "lead": "画像をアップロードしてお米ノベルティ（国産米）2合の完成イメージを確認できます",
+  "ui": {
+    "theme": "artboard-v1",
+    "artboard": {
+      "width": 1512,
+      "height": 850
+    },
+    "productHeadingLabel": "商品名"
+  },
   "assets": {
     "base": "./assets/rice-2go-original-base.png",
     "mask": "./assets/rice-2go-original-mask.png"
