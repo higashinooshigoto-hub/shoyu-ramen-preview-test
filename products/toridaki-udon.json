@@ -4,6 +4,14 @@
   "title": "カップ麺 鶏炊きうどん ミニ セミオーダー プレビュー",
   "eyebrow": "【ノベルティのお菓子屋さん】",
   "lead": "画像をアップロードして鶏炊きうどんミニの完成イメージを確認できます",
+  "ui": {
+    "theme": "artboard-v1",
+    "artboard": {
+      "width": 1512,
+      "height": 850
+    },
+    "productHeadingLabel": "商品名"
+  },
   "assets": {
     "base": "./assets/toridaki-udon-semi.png",
     "mask": "./assets/toridaki-udon-semi-mask.png"
@@ -135,6 +143,7 @@
       "label": "1行目",
       "placeholder": "8文字程度",
       "defaultText": "ああああああああ",
+      "showDefaultTextInInput": false,
       "maxLength": 10,
       "halfWidthMaxLength": 18,
       "x": 600,
@@ -157,6 +166,7 @@
       "label": "2行目",
       "placeholder": "8文字程度",
       "defaultText": "ああああああああ",
+      "showDefaultTextInInput": false,
       "maxLength": 10,
       "halfWidthMaxLength": 18,
       "x": 600,

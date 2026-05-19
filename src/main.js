@@ -31,7 +31,9 @@ import {
 } from "./ui.js";
 
 const elements = {
+  page: document.querySelector(".page"),
   title: document.querySelector("#productTitle"),
+  titleLabel: document.querySelector("#productTitleLabel"),
   controls: document.querySelector("#controlsPanel"),
   canvas: document.querySelector("#stageCanvas"),
   canvasShell: document.querySelector(".canvas-shell"),

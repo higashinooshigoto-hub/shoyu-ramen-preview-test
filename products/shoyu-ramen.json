@@ -2,8 +2,17 @@
   "id": "shoyu-ramen",
   "name": "醤油ラーメン",
   "title": "カップ麺 スーパーカップ（醤油） セミオーダー プレビュー",
+  "headerTitle": "カップ麺 スーパーカップ（醤油） セミオーダー",
   "eyebrow": "【ノベルティのお菓子屋さん】",
   "lead": "画像をアップロードして醤油ラーメンの完成イメージを確認できます",
+  "ui": {
+    "theme": "artboard-v1",
+    "artboard": {
+      "width": 1512,
+      "height": 850
+    },
+    "productHeadingLabel": "商品名"
+  },
   "assets": {
     "base": "./assets/shoyu-ramen.png",
     "mask": "./assets/shoyu-ramen-mask.png"
@@ -177,6 +186,7 @@
       "label": "1行目",
       "placeholder": "4文字程度",
       "defaultText": "ああああ",
+      "showDefaultTextInInput": false,
       "maxLength": 5,
       "halfWidthMaxLength": 10,
       "x": 600,
@@ -195,6 +205,7 @@
       "label": "2行目",
       "placeholder": "8文字程度",
       "defaultText": "ああああああああ",
+      "showDefaultTextInInput": false,
       "maxLength": 10,
       "halfWidthMaxLength": 20,
       "x": 600,
@@ -213,6 +224,7 @@
       "label": "3行目",
       "placeholder": "8文字程度",
       "defaultText": "ああああああああ",
+      "showDefaultTextInInput": false,
       "maxLength": 9,
       "halfWidthMaxLength": 18,
       "x": 600,

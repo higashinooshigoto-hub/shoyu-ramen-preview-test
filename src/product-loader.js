@@ -56,6 +56,9 @@ function normalizeProduct(product) {
       showPrintAreaGuide: true,
       ...(product.preview || {}),
     },
+    ui: {
+      ...(product.ui || {}),
+    },
     textLayers: product.textLayers || [],
     controls: product.controls || [],
   };

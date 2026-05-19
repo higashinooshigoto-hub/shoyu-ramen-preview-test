@@ -4,6 +4,14 @@
   "title": "カップ麺 小海老天そば ミニ セミオーダー プレビュー",
   "eyebrow": "【ノベルティのお菓子屋さん】",
   "lead": "画像をアップロードして小海老天そばミニの完成イメージを確認できます",
+  "ui": {
+    "theme": "artboard-v1",
+    "artboard": {
+      "width": 1512,
+      "height": 850
+    },
+    "productHeadingLabel": "商品名"
+  },
   "assets": {
     "base": "./assets/koebi-soba-semi.png",
     "mask": "./assets/koebi-soba-semi-mask.png"
@@ -135,6 +143,7 @@
       "label": "1行目",
       "placeholder": "8文字程度",
       "defaultText": "ああああああああ",
+      "showDefaultTextInInput": false,
       "maxLength": 10,
       "halfWidthMaxLength": 18,
       "x": 600,
@@ -157,6 +166,7 @@
       "label": "2行目",
       "placeholder": "8文字程度",
       "defaultText": "ああああああああ",
+      "showDefaultTextInInput": false,
       "maxLength": 10,
       "halfWidthMaxLength": 18,
       "x": 600,

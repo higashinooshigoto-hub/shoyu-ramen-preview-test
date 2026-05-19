@@ -70,6 +70,13 @@
  */
 
 /**
+ * @typedef {Object} ProductUiConfig
+ * @property {string} [theme]
+ * @property {{width: number, height: number}} [artboard]
+ * @property {string} [productHeadingLabel]
+ */
+
+/**
  * @typedef {Object} ProductExportConfig
  * @property {number} [scale]
  * @property {string} [fileName]
@@ -81,6 +88,7 @@
  * @property {string} label
  * @property {string} [placeholder]
  * @property {string} [defaultText]
+ * @property {boolean} [showDefaultTextInInput]
  * @property {number} [maxLength]
  * @property {number} [halfWidthMaxLength]
  * @property {number} x
@@ -138,6 +146,7 @@
  * @property {string} id
  * @property {string} name
  * @property {string} title
+ * @property {string} [headerTitle]
  * @property {string} [eyebrow]
  * @property {string} [lead]
  * @property {ProductAssetConfig} assets
@@ -149,6 +158,7 @@
  * @property {ProductOverlayStyle} [overlayStyle]
  * @property {"background"|"foreground"} [baseLayerOrder]
  * @property {ProductPreviewConfig} [preview]
+ * @property {ProductUiConfig} [ui]
  * @property {ProductExportConfig} [export]
  * @property {ProductTextLayer[]} [textLayers]
  * @property {ProductControl[]} [controls]

@@ -4,9 +4,41 @@ function getProductHeading(product) {
 }
 
 export function applyProductContent(product, elements) {
+  const uiTheme = product.ui?.theme || "";
+  const headingLabel = product.ui?.productHeadingLabel || "";
+  const artboardWidth = Number(product.ui?.artboard?.width);
+  const artboardHeight = Number(product.ui?.artboard?.height);
+
   document.title = product.title || product.name || "Product Preview";
   elements.title.textContent = getProductHeading(product);
   elements.stageNote.innerHTML = product.preview?.note || "";
+
+  document.body.dataset.productId = product.id || "";
+
+  if (uiTheme) {
+    document.body.dataset.uiTheme = uiTheme;
+  } else {
+    delete document.body.dataset.uiTheme;
+  }
+
+  if (elements.page) {
+    if (Number.isFinite(artboardWidth) && artboardWidth > 0) {
+      elements.page.style.setProperty("--product-artboard-width", `${artboardWidth}px`);
+    } else {
+      elements.page.style.removeProperty("--product-artboard-width");
+    }
+
+    if (Number.isFinite(artboardHeight) && artboardHeight > 0) {
+      elements.page.style.setProperty("--product-artboard-height", `${artboardHeight}px`);
+    } else {
+      elements.page.style.removeProperty("--product-artboard-height");
+    }
+  }
+
+  if (elements.titleLabel) {
+    elements.titleLabel.hidden = !headingLabel;
+    elements.titleLabel.textContent = headingLabel;
+  }
 }
 
 export function buildControls(container, product, handlers) {
@@ -177,6 +209,7 @@ export function buildControls(container, product, handlers) {
       if (!product.textLayers?.length) continue;
 
       const section = document.createElement("section");
+      section.className = "control-section control-section--text-layers";
       const heading = document.createElement("h2");
       heading.textContent = control.heading;
       section.append(heading);
@@ -246,6 +279,7 @@ export function buildControls(container, product, handlers) {
 
     if (control.type === "confirm") {
       const heading = document.createElement("h2");
+      heading.className = "control-heading control-heading--confirm";
       heading.textContent = control.heading;
       container.append(heading);
 
@@ -397,7 +431,10 @@ export function updateConfirmUI(refs, isDesignConfirmed) {
 export function syncTextInputs(refs, state) {
   for (const layer of state.product.textLayers || []) {
     if (refs.textInputs[layer.id]) {
-      refs.textInputs[layer.id].value = state.texts[layer.id] || "";
+      const currentValue = state.texts[layer.id] || "";
+      const shouldShowPlaceholder =
+        layer.showDefaultTextInInput === false && currentValue === (layer.defaultText || "");
+      refs.textInputs[layer.id].value = shouldShowPlaceholder ? "" : currentValue;
     }
   }
 }
