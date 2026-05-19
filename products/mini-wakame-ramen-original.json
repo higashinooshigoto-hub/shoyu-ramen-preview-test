@@ -4,6 +4,14 @@
   "title": "カップ麺 ミニわかめラーメン（ごま・しょうゆ） オリジナル プレビュー",
   "eyebrow": "【ノベルティのお菓子屋さん】",
   "lead": "画像をアップロードしてミニわかめラーメンオリジナルの完成イメージを確認できます",
+  "ui": {
+    "theme": "artboard-v1",
+    "artboard": {
+      "width": 1512,
+      "height": 850
+    },
+    "productHeadingLabel": "商品名"
+  },
   "assets": {
     "base": "./assets/mini-wakame-ramen-original.png",
     "mask": "./assets/mini-wakame-ramen-original-mask.png",

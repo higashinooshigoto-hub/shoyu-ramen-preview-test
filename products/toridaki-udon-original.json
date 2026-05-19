@@ -4,6 +4,14 @@
   "title": "カップ麺 鶏炊きうどん ミニ オリジナル プレビュー",
   "eyebrow": "【ノベルティのお菓子屋さん】",
   "lead": "画像をアップロードして鶏炊きうどんミニオリジナルの完成イメージを確認できます",
+  "ui": {
+    "theme": "artboard-v1",
+    "artboard": {
+      "width": 1512,
+      "height": 850
+    },
+    "productHeadingLabel": "商品名"
+  },
   "assets": {
     "base": "./assets/toridaki-udon-original.png",
     "mask": "./assets/toridaki-udon-original-mask.png",
