@@ -43,6 +43,9 @@ const elements = {
 let state;
 let renderer;
 let controlRefs;
+const activePointers = new Map();
+let dragPointerId = null;
+let gestureState = null;
 
 const ROTATION_SNAP_POINTS = [-180, -135, -95, -90, -45, 0, 45, 90, 95, 135, 180];
 const ROTATION_SNAP_THRESHOLD = 1;
@@ -263,6 +266,84 @@ function getCanvasPoint(event) {
   };
 }
 
+function getPointerDistance(pointA, pointB) {
+  return Math.hypot(pointB.x - pointA.x, pointB.y - pointA.y);
+}
+
+function getPointerAngle(pointA, pointB) {
+  return Math.atan2(pointB.y - pointA.y, pointB.x - pointA.x);
+}
+
+function getPointerMidpoint(pointA, pointB) {
+  return {
+    x: (pointA.x + pointB.x) / 2,
+    y: (pointA.y + pointB.y) / 2,
+  };
+}
+
+function normalizeAngleDeltaDegrees(degrees) {
+  let normalized = degrees;
+  while (normalized > 180) normalized -= 360;
+  while (normalized < -180) normalized += 360;
+  return normalized;
+}
+
+function startDrag(pointerId, point) {
+  dragPointerId = pointerId;
+  state.dragging = true;
+  state.dragOffsetX = point.x - state.overlay.x;
+  state.dragOffsetY = point.y - state.overlay.y;
+  elements.canvas.classList.add("dragging");
+}
+
+function stopDrag() {
+  dragPointerId = null;
+  state.dragging = false;
+  elements.canvas.classList.remove("dragging");
+}
+
+function startGesture() {
+  if (activePointers.size < 2) return;
+
+  const [pointA, pointB] = Array.from(activePointers.values());
+  const midpoint = getPointerMidpoint(pointA, pointB);
+  const distance = getPointerDistance(pointA, pointB);
+  const angle = getPointerAngle(pointA, pointB);
+
+  gestureState = {
+    midpoint,
+    distance: Math.max(distance, 1),
+    angle,
+    overlayX: state.overlay.x,
+    overlayY: state.overlay.y,
+    overlayScale: state.overlay.scale,
+    overlayRotation: state.overlay.rotation,
+  };
+
+  stopDrag();
+}
+
+function continueGesture() {
+  if (!gestureState || activePointers.size < 2) return;
+
+  const [pointA, pointB] = Array.from(activePointers.values());
+  const midpoint = getPointerMidpoint(pointA, pointB);
+  const distance = Math.max(getPointerDistance(pointA, pointB), 1);
+  const angle = getPointerAngle(pointA, pointB);
+  const angleDeltaDegrees = normalizeAngleDeltaDegrees(
+    ((angle - gestureState.angle) * 180) / Math.PI,
+  );
+
+  state.overlay.x = gestureState.overlayX + (midpoint.x - gestureState.midpoint.x);
+  state.overlay.y = gestureState.overlayY + (midpoint.y - gestureState.midpoint.y);
+  state.overlay.scale = gestureState.overlayScale * (distance / gestureState.distance);
+  state.overlay.rotation = gestureState.overlayRotation + angleDeltaDegrees;
+
+  markDesignDirty();
+  syncControlsFromState();
+  renderer.render();
+}
+
 function isPointInsideOverlay(point) {
   if (!state.overlayImage) return false;
 
@@ -287,30 +368,71 @@ function handlePointerDown(event) {
   const point = getCanvasPoint(event);
   if (!isPointInsideOverlay(point)) return;
 
-  state.dragging = true;
+  activePointers.set(event.pointerId, point);
+
   if (elements.canvas.setPointerCapture) {
     elements.canvas.setPointerCapture(event.pointerId);
   }
-  state.dragOffsetX = point.x - state.overlay.x;
-  state.dragOffsetY = point.y - state.overlay.y;
-  elements.canvas.classList.add("dragging");
+
+  if (activePointers.size === 1) {
+    startDrag(event.pointerId, point);
+    return;
+  }
+
+  if (activePointers.size === 2) {
+    startGesture();
+  }
 }
 
 function handlePointerMove(event) {
-  if (!state.dragging) return;
   const point = getCanvasPoint(event);
+  if (activePointers.has(event.pointerId)) {
+    activePointers.set(event.pointerId, point);
+  }
+
+  if (gestureState && activePointers.size >= 2) {
+    continueGesture();
+    return;
+  }
+
+  if (!state.dragging || dragPointerId !== event.pointerId) return;
+
   state.overlay.x = point.x - state.dragOffsetX;
   state.overlay.y = point.y - state.dragOffsetY;
   markDesignDirty();
   renderer.render();
 }
 
-function handlePointerUp() {
-  if (state.dragging) {
+function handlePointerUp(event) {
+  const hadInteraction = state.dragging || Boolean(gestureState);
+
+  activePointers.delete(event.pointerId);
+
+  if (elements.canvas.releasePointerCapture && elements.canvas.hasPointerCapture?.(event.pointerId)) {
+    elements.canvas.releasePointerCapture(event.pointerId);
+  }
+
+  if (gestureState && activePointers.size >= 2) {
+    continueGesture();
+    return;
+  }
+
+  if (gestureState) {
+    gestureState = null;
+
+    if (activePointers.size === 1) {
+      const [remainingPointerId, remainingPoint] = Array.from(activePointers.entries())[0];
+      startDrag(remainingPointerId, remainingPoint);
+    } else {
+      stopDrag();
+    }
+  } else if (dragPointerId === event.pointerId || activePointers.size === 0) {
+    stopDrag();
+  }
+
+  if (hadInteraction) {
     saveProjectState();
   }
-  state.dragging = false;
-  elements.canvas.classList.remove("dragging");
 }
 
 function bindCanvasEvents() {
