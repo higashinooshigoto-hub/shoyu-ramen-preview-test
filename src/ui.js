@@ -4,7 +4,7 @@ function getProductHeading(product) {
 }
 
 export function applyProductContent(product, elements) {
-  const uiTheme = product.ui?.theme || "";
+  const uiTheme = product.ui?.theme || "artboard-v1";
   const headingLabel = product.ui?.productHeadingLabel || "";
   const artboardWidth = Number(product.ui?.artboard?.width);
   const artboardHeight = Number(product.ui?.artboard?.height);
@@ -14,12 +14,7 @@ export function applyProductContent(product, elements) {
   elements.stageNote.innerHTML = product.preview?.note || "";
 
   document.body.dataset.productId = product.id || "";
-
-  if (uiTheme) {
-    document.body.dataset.uiTheme = uiTheme;
-  } else {
-    delete document.body.dataset.uiTheme;
-  }
+  document.body.dataset.uiTheme = uiTheme;
 
   if (elements.page) {
     if (Number.isFinite(artboardWidth) && artboardWidth > 0) {

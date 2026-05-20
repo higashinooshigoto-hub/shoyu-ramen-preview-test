@@ -35,6 +35,8 @@ export async function loadProductConfig(catalog, productId) {
 function normalizeProduct(product) {
   const width = product.canvas?.width || product.baseWidth;
   const height = product.canvas?.height || product.baseHeight;
+  const productUi = product.ui || {};
+  const productUiArtboard = productUi.artboard || {};
 
   return {
     ...product,
@@ -57,7 +59,13 @@ function normalizeProduct(product) {
       ...(product.preview || {}),
     },
     ui: {
-      ...(product.ui || {}),
+      theme: "artboard-v1",
+      ...productUi,
+      artboard: {
+        width: 1512,
+        height: 850,
+        ...productUiArtboard,
+      },
     },
     textLayers: product.textLayers || [],
     controls: product.controls || [],
